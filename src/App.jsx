@@ -8,6 +8,8 @@ import SunIcon from "./assets/icons/sun.svg";
 import BaseLayout from "./layout/BaseLayout";
 import { Dashboard, PageNotFound } from "./screens";
 import Statistics from "./screens/statistics/StatisticsScreen";
+import Login from "./components/login/LogIn"
+import SignUp from "./components/signUp/SignUp"
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -25,6 +27,10 @@ function App() {
     <>
       <Router>
         <Routes>
+        <Route>
+            <Route path="/login" element={<Login/>} />
+            <Route path="/signup" element={<SignUp/>} />
+          </Route>
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/statistics" element={<Statistics />} />

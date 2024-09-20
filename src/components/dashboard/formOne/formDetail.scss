@@ -3,13 +3,26 @@
   flex-direction: column; /* Stack divs vertically */
   justify-content: center; /* Vertically center the divs */
   align-items: center;     /* Horizontally center the divs */
-         /* Makes the container full viewport height */
+       
   gap: 10px;  
 
 
   .area-top-title {
     color: var(--text-color-inverted);
   }
+
+
+  .form1 .MuiInputBase-input{
+    color: var(--form-text-color);
+  }
+  
+  .form-controller-1 button{
+    display: block; margin: 0 auto
+  }
+
+  .form-controller-1 .MuiFormLabel-root{
+   color: var(--form-lable-color);
+  } 
 
   .area-top-l {
     display: flex;
@@ -20,7 +33,7 @@
   .form-open-btn {
     display: inline-flex;
     align-items: center;
-    // display: none;
+    // display: none;sdsde
     margin-bottom: -1px;
     color: var(--text-color-inverted);
 

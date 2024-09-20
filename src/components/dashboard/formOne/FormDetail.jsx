@@ -47,27 +47,31 @@ const FormDetail = () => {
       </div>
 
       <div className="area-top-l">
-        <h2 className="area-top-title">Dashboard</h2>
+       
         <form>
-      <TextField
-        label="Name"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        label="Email"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-      >
-        Submit
-      </Button>
+        <div className="form-controller-1">
+          <TextField
+            className="form1"
+            label="Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            className="form1"
+            label="Email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+           
+          >
+            Submit
+          </Button>
+        </div>
     </form>
       </div>
 

@@ -129,11 +129,20 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/signup" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>
-                <span className="menu-link-text">Logout</span>
+                <span className="menu-link-text">Sign Up</span>
+              </Link>
+            </li>
+
+            <li className="menu-item">
+              <Link to="/login" className="menu-link">
+                <span className="menu-link-icon">
+                  <MdOutlineLogout size={20} />
+                </span>
+                <span className="menu-link-text">Log In</span>
               </Link>
             </li>
           </ul>

@@ -30,6 +30,7 @@ function App() {
         <Route>
             <Route path="/login" element={<Login/>} />
             <Route path="/signup" element={<SignUp/>} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Dashboard />} />

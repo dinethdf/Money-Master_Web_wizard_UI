@@ -47,8 +47,6 @@ const Statistics = () => {
           </div>
         </div>
       </section>
-
-      <TransactionForm/>
     </div>
   );
 };

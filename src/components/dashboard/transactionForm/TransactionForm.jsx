@@ -9,18 +9,18 @@ import { DateRange } from "react-date-range";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+
 const TransactionForm = () => {
   const { openSidebar } = useContext(SidebarContext);
 
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 7),
-      key: "selection",
-    },
-  ]);
 
-  const [showDatePicker, setShowDatePicker] = useState(false);
+
   const dateRangeRef = useRef(null);
 
   const handleInputClick = () => {
@@ -43,65 +43,63 @@ const TransactionForm = () => {
   return (
     <section className="form-area-top">
       <div className="area-top-l">
-        <h2 className="area-top-title">Dashboard</h2>
+        <h2 className="area-top-title">Transactions</h2>
       </div>
 
       <div className="area-top-l">
-       
         <form>
-        <div className="form-controller-1">
-        <TextField
-      label="Outlined"
-      variant="outlined"
-      color="secondary"
-      sx={{
-        "& .MuiOutlinedInput-root": {
-          color: "#000",
-          fontFamily: "Arial",
-          fontWeight: "bold",
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#2e2e2e",
-            borderWidth: "2px",
-          },
-          "&.Mui-focused": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "red",
-              borderWidth: "2px",
+          <div className="form-controller-1">
+            <TextField
+              className="form1"
+              label="Name"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              className="form1"
+              label="Name"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              className="form1"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            />
 
-            },
-          },
-          "&:hover:not(.Mui-focused)": {
-            "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "yellow",
-            },
-          },
-        },
+            <div className="form-Elements">
+              <TextField
+                className="form1"
+                label="Name"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                className="form1"
+                label="Email"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+              /></div>
 
-      }}
-    />
-          <TextField
-            className="form1"
-            label="Name"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            className="form1"
-            label="Email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-          <Button
-            variant="contained"
-            color="primary"
-           
-          >
-            Submit
-          </Button>
-        </div>
-    </form>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker label="Select Transaction Date" />
+            </LocalizationProvider>
+
+            <Button
+              className="submitBtn"
+              variant="contained"
+              color="primary"
+            >
+              Submit
+            </Button>
+          </div>
+        </form>
       </div>
 
     </section>

@@ -1,5 +1,5 @@
 import { MdOutlineMenu } from "react-icons/md";
-import "./formDetail.scss";
+import "./TransactionForm.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SidebarContext } from "../../../context/SidebarContext";
 import "react-date-range/dist/styles.css"; // main style file
@@ -9,7 +9,7 @@ import { DateRange } from "react-date-range";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const FormDetail = () => {
+const TransactionForm = () => {
   const { openSidebar } = useContext(SidebarContext);
 
   const [state, setState] = useState([
@@ -56,6 +56,27 @@ const FormDetail = () => {
             variant="outlined"
             fullWidth
             margin="normal"
+            sx={{
+              // Root class for the input field
+              "& .MuiOutlinedInput-root": {
+                color: "red",
+                fontFamily: "Arial",
+                fontWeight: "bold",
+             
+                // Class for the border around the input field
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "red",
+                  borderWidth: "2px",
+                },
+              },
+              
+              // Class for the label of the input field
+              "& .MuiInputLabel-outlined": {
+                color: "red",
+                borderColor: "yellow",
+                fontWeight: "bold",
+              },
+            }}
           />
           <TextField
             className="form1"
@@ -79,4 +100,4 @@ const FormDetail = () => {
   );
 };
 
-export default FormDetail;
+export default TransactionForm;

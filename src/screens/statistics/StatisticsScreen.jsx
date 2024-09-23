@@ -1,7 +1,7 @@
 import { AreaCards, AreaCharts, AreaTable, AreaTop } from "../../components";
 
 import { BarChart } from '@mui/x-charts/BarChart';
-import FormDetail from './../../components/dashboard/formOne/FormDetail';
+import TransactionForm from './../../components/dashboard/transactionForm/TransactionForm';
 
 const Statistics = () => {
   return (
@@ -48,7 +48,7 @@ const Statistics = () => {
         </div>
       </section>
 
-      <FormDetail/>
+      <TransactionForm/>
     </div>
   );
 };

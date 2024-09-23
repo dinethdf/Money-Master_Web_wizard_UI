@@ -50,33 +50,41 @@ const TransactionForm = () => {
        
         <form>
         <div className="form-controller-1">
+        <TextField
+      label="Outlined"
+      variant="outlined"
+      color="secondary"
+      sx={{
+        "& .MuiOutlinedInput-root": {
+          color: "#000",
+          fontFamily: "Arial",
+          fontWeight: "bold",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#2e2e2e",
+            borderWidth: "2px",
+          },
+          "&.Mui-focused": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "red",
+              borderWidth: "2px",
+
+            },
+          },
+          "&:hover:not(.Mui-focused)": {
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "yellow",
+            },
+          },
+        },
+
+      }}
+    />
           <TextField
             className="form1"
             label="Name"
             variant="outlined"
             fullWidth
             margin="normal"
-            sx={{
-              // Root class for the input field
-              "& .MuiOutlinedInput-root": {
-                color: "red",
-                fontFamily: "Arial",
-                fontWeight: "bold",
-             
-                // Class for the border around the input field
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "red",
-                  borderWidth: "2px",
-                },
-              },
-              
-              // Class for the label of the input field
-              "& .MuiInputLabel-outlined": {
-                color: "red",
-                borderColor: "yellow",
-                fontWeight: "bold",
-              },
-            }}
           />
           <TextField
             className="form1"

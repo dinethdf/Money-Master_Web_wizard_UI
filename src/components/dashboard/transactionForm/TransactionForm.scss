@@ -31,7 +31,7 @@
   }
 
   .form-controller-1 .MuiOutlinedInput-notchedOutline{
-    border-color: red;
+    border-color: rgb(243, 32, 32);
   } 
 
 
@@ -40,23 +40,35 @@
 // }
 
 // .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-//     border-color: rgba(238, 234, 0, 0.87);
+//     border-color: rgb(238, 255, 0);
 // }
 
-// .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
-//   border-color: rgba(211, 27, 211, 0.87);
-// }
+// // .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+// //   border-color: rgba(211, 27, 211, 0.87);
+// // }
 
-// .MuiOutlinedInput-root .Mui-Focused .MuiOutlinedInput-notchedOutline {
-//   border-color: #b6c3d0;
-// }
 
-// .MuiInputBase-root .MuiOutlinedInput-root .MuiInputBase-colorPrimary .MuiInputBase-fullWidth .MuiInputBase-formControl .css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root
-// .MuiInputBase-root .MuiOutlinedInput-root .MuiInputBase-colorPrimary .MuiInputBase-fullWidth .MuiInputBase-formControl
-// .css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root  .MuiOutlinedInput-notchedOutline {
-// border-color: #cc8c7c !important;
+.form-controller-1 .MuiOutlinedInput-root {
+   color: "#000";
+    font-family: "Arial";
+    font-weight: bold;
 
-// }
+    & .MuiOutlinedInput-notchedOutline {
+      border-color: #1329ec;
+      border-width:2px;
+    }
+
+    &.Mui-focused {
+      & .MuiOutlinedInput-notchedOutline {
+        border-color: red;
+        border-width: 2px,
+      }
+    }
+    &:hover .MuiOutlinedInput-notchedOutline{
+      border-color: #d0ff00; // Change the border color on hover
+    }
+  }
+
 
   .form-open-btn {
     display: inline-flex;

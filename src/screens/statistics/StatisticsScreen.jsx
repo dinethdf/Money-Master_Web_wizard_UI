@@ -24,7 +24,7 @@ const Statistics = () => {
               </div>
             </div>
           </div>
-          <div className="bar-chart-wrapper">
+          <div className="chart">
             <BarChart
               series={[
                 { data: [35, 44, 24, 34] },

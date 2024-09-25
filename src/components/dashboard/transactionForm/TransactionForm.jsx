@@ -2,8 +2,10 @@ import { MdOutlineMenu } from "react-icons/md";
 import "./TransactionForm.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SidebarContext } from "../../../context/SidebarContext";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+
+import "react-date-range/dist/styles.css"; 
+import "react-date-range/dist/theme/default.css"; 
+
 import { addDays } from "date-fns";
 import { DateRange } from "react-date-range";
 import TextField from '@mui/material/TextField';
@@ -14,6 +16,8 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import AutoFill from "../../../common/autoFill/AutoFill";
+
 
 
 const TransactionForm = () => {
@@ -23,9 +27,6 @@ const TransactionForm = () => {
 
   const dateRangeRef = useRef(null);
 
-  const handleInputClick = () => {
-    setShowDatePicker(true);
-  };
 
   const handleClickOutside = (event) => {
     if (dateRangeRef.current && !dateRangeRef.current.contains(event.target)) {
@@ -90,7 +91,7 @@ const TransactionForm = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker label="Select Transaction Date" />
             </LocalizationProvider>
-
+<AutoFill/>
             <Button
               className="submitBtn"
               variant="contained"

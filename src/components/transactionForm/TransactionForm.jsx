@@ -1,7 +1,7 @@
 import { MdOutlineMenu } from "react-icons/md";
 import "./TransactionForm.scss";
 import { useContext, useEffect, useRef, useState } from "react";
-import { SidebarContext } from "../../../context/SidebarContext";
+import { SidebarContext } from "../../context/SidebarContext";
 
 import "react-date-range/dist/styles.css"; 
 import "react-date-range/dist/theme/default.css"; 
@@ -16,7 +16,7 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import AutoFill from "../../../common/autoFill/AutoFill";
+import AutoFill from "../../common/autoFill/AutoFill";
 
 
 
@@ -52,21 +52,21 @@ const TransactionForm = () => {
           <div className="form-controller-1">
             <TextField
               className="form1"
-              label="Name"
+              label="Type"
               variant="outlined"
               fullWidth
               margin="normal"
             />
             <TextField
               className="form1"
-              label="Name"
+              label="Discription"
               variant="outlined"
               fullWidth
               margin="normal"
             />
             <TextField
               className="form1"
-              label="Email"
+              label="Discription"
               variant="outlined"
               fullWidth
               margin="normal"
@@ -75,23 +75,26 @@ const TransactionForm = () => {
             <div className="form-Elements">
               <TextField
                 className="form1"
-                label="Name"
+                label="Text 1"
                 variant="outlined"
                 fullWidth
                 margin="normal"
               />
               <TextField
                 className="form1"
-                label="Email"
+                label="Text 2"
                 variant="outlined"
                 fullWidth
                 margin="normal"
               /></div>
 
+             <div className="form-Elements-autoFill">
+              <AutoFill className="form1"/>
+             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker label="Select Transaction Date" />
             </LocalizationProvider>
-<AutoFill/>
+      
             <Button
               className="submitBtn"
               variant="contained"

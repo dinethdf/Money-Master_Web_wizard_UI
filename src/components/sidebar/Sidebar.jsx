@@ -92,6 +92,14 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
+              <Link to="/samplecomp" className="menu-link">
+                <span className="menu-link-icon">
+                  <MdOutlineShoppingBag size={20} />
+                </span>
+                <span className="menu-link-text">Sample Comp</span>
+              </Link>
+            </li>
+            <li className="menu-item">
               <Link to="/" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />

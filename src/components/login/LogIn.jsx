@@ -125,7 +125,7 @@ export default function Login() {
         <CssBaseline enableColorScheme />
         <SignInContainer direction="column" justifyContent="space-between">
           <Card variant="outlined">
-            <SitemarkIcon />
+            {/* <SitemarkIcon /> */}
             <Typography
               component="h1"
               variant="h4"

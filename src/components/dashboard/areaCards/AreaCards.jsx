@@ -8,27 +8,27 @@ const AreaCards = () => {
         colors={["#e4e8ef", "#475be8"]}
         percentFillValue={80}
         cardInfo={{
-          title: "Todays Sales",
+          title: "Total Income",
           value: "$20.4K",
-          text: "We have sold 123 items.",
+          text: "For this Month",
         }}
       />
       <AreaCard
-        colors={["#e4e8ef", "#4ce13f"]}
-        percentFillValue={50}
-        cardInfo={{
-          title: "Todays Revenue",
-          value: "$8.2K",
-          text: "Available to payout",
-        }}
-      />
-      <AreaCard
-        colors={["#e4e8ef", "#f29a2e"]}
+        colors={["#e4e8ef", "red"]}
         percentFillValue={40}
         cardInfo={{
-          title: "In Escrow",
-          value: "$18.2K",
+          title: "Total Expenses",
+          value: "$14.2K",
           text: "Available to payout",
+        }}
+      />
+      <AreaCard
+        colors={["#e4e8ef", "gray"]}
+        percentFillValue={40}
+        cardInfo={{
+          title: "This Month Target Saving",
+          value: "$2.2K",
+          text: "58%",
         }}
       />
     </section>

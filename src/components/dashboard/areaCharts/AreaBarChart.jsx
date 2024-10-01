@@ -15,49 +15,29 @@ import "./AreaCharts.scss";
 
 const data = [
   {
-    month: "Jan",
-    loss: 70,
-    profit: 100,
+    week: "Week 1",
+    expenses: 70,
+    income: 100,
   },
   {
-    month: "Feb",
-    loss: 55,
-    profit: 85,
+    week: "Week 2",
+    expenses: 55,
+    income: 85,
   },
   {
-    month: "Mar",
-    loss: 35,
-    profit: 90,
+    week: "Week 3",
+    expenses: 35,
+    income: 90,
   },
   {
-    month: "April",
-    loss: 90,
-    profit: 70,
+    week: "Week 4",
+    expenses: 90,
+    income: 70,
   },
   {
-    month: "May",
-    loss: 55,
-    profit: 80,
-  },
-  {
-    month: "Jun",
-    loss: 30,
-    profit: 50,
-  },
-  {
-    month: "Jul",
-    loss: 32,
-    profit: 75,
-  },
-  {
-    month: "Aug",
-    loss: 62,
-    profit: 86,
-  },
-  {
-    month: "Sep",
-    loss: 55,
-    profit: 78,
+    week: "Week 5",
+    expenses: 90,
+    income: 70,
   },
 ];
 
@@ -79,9 +59,9 @@ const AreaBarChart = () => {
   return (
     <div className="bar-chart">
       <div className="bar-chart-info">
-        <h5 className="bar-chart-title">Total Revenue</h5>
+        <h5 className="bar-chart-title">Monthly Financial Overview</h5>
         <div className="chart-info-data">
-          <div className="info-data-value">$50.4K</div>
+          <div className="info-data-value">$14.2K</div>
           <div className="info-data-text">
             <FaArrowUpLong />
             <p>5% than last month.</p>
@@ -89,7 +69,7 @@ const AreaBarChart = () => {
         </div>
       </div>
       <div className="bar-chart-wrapper">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="80%" height="100%">
           <BarChart
             width={500}
             height={200}
@@ -103,7 +83,7 @@ const AreaBarChart = () => {
           >
             <XAxis
               padding={{ left: 10 }}
-              dataKey="month"
+              dataKey="week"
               tickSize={0}
               axisLine={false}
               tick={{
@@ -133,7 +113,7 @@ const AreaBarChart = () => {
               formatter={formatLegendValue}
             />
             <Bar
-              dataKey="profit"
+              dataKey="income"
               fill="#475be8"
               activeBar={false}
               isAnimationActive={false}
@@ -141,7 +121,7 @@ const AreaBarChart = () => {
               radius={[4, 4, 4, 4]}
             />
             <Bar
-              dataKey="loss"
+              dataKey="expenses"
               fill="#e3e7fc"
               activeBar={false}
               isAnimationActive={false}

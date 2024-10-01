@@ -66,7 +66,7 @@ const TransactionForm = () => {
             />
             <TextField
               className="form1"
-              label="Discription"
+              label="Payment Methode"
               variant="outlined"
               fullWidth
               margin="normal"

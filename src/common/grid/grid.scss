@@ -1,0 +1,51 @@
+.mainGridBox {
+    width: 100%;
+    height: 600px;
+
+    .actions {
+        color: var(--xl-text-color);
+    }
+
+    // edite Button color
+
+    // .textPrimary {
+    //     color: blue;   
+    // ;   }
+
+
+    .mainDataGrid {
+        box-shadow: 2;
+        border: 2;
+        border-color: rgb(213, 143, 143);
+
+        .MuiDataGrid-cell:hover {
+            color: blue;
+        }
+
+        .MuiDataGrid-columnHeaders  {
+            // background-color: red; // Change header background color
+            // color: blue; // Change header text color
+        }
+
+        .MuiDataGrid-row:nth-of-type(odd) {
+            background-color: yellow; // Change row background color
+            color: rgb(63, 16, 16); // Change row text color
+        }
+
+        .MuiDataGrid-row:nth-of-type(even) {
+            background-color: red; // Alternate row color
+        }
+
+.MuiDataGrid-topContainer .MuiDataGrid-row--borderBottom{
+            background-color: lightcoral;
+             color: blue;       }
+  
+
+
+
+
+
+    }
+
+
+}

@@ -141,7 +141,7 @@ export default function Grid() {
       field: 'age',
       headerName: 'Age',
       type: 'number',
-      width: 80,
+      width: 100,
       align: 'left',
       headerAlign: 'left',
       editable: true,
@@ -159,7 +159,7 @@ export default function Grid() {
       width: 220,
       editable: true,
       type: 'singleSelect',
-      valueOptions: ['Market', 'Finance', 'Development'],
+      valueOptions: roles,
     },
     {
       field: 'actions',
@@ -211,43 +211,14 @@ export default function Grid() {
 
   return (
     <Box
-      sx={{
-        height: 500,
-        width: '100%',
-      
-        '& .actions': {
-          color: 'text.secondary',
-        },
-        '& .textPrimary': {
-          color: 'text.primary',
-        },
-
-      }}
+    className="mainGridBox"
     >
       <DataGrid
         rows={rows}
         columns={columns}
         editMode="row"
-        sx={{
-            boxShadow: 2,
-            border: 2,
-            borderColor: 'red',
-            '& .MuiDataGrid-cell:hover': {
-              color: 'blue',
-            },
+        className='mainDataGrid'
 
-      '& .MuiDataGrid-columnHeaders': {
-        backgroundColor: 'red',  // Change header background color
-        color: 'red',  // Change header text color
-      },
-     '& .MuiDataGrid-row:nth-of-type(odd)': {
-        backgroundColor: 'lightBlue',  // Change row background color
-        color: 'black',  // Change row text color
-      },
-      '& .MuiDataGrid-row:nth-of-type(even)': {
-        backgroundColor: 'red',  // Alternate row color
-      },
-          }}
         rowModesModel={rowModesModel}
         onRowModesModelChange={handleRowModesModelChange}
         onRowEditStop={handleRowEditStop}

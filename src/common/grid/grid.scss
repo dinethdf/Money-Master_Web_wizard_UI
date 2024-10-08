@@ -22,9 +22,14 @@
             color: blue;
         }
 
-        .MuiDataGrid-columnHeaders  {
-            // background-color: red; // Change header background color
-            // color: blue; // Change header text color
+        .MuiDataGrid-topContainer {
+            color: rgb(233, 231, 231);
+            .MuiDataGrid-columnHeaders{
+                .MuiDataGrid-row--borderBottom{
+                    background-color: rgb(78, 34, 209);
+                    // height: 50px;
+                }
+            } 
         }
 
         .MuiDataGrid-row:nth-of-type(odd) {
@@ -36,10 +41,12 @@
             background-color: red; // Alternate row color
         }
 
-.MuiDataGrid-topContainer .MuiDataGrid-row--borderBottom{
-            background-color: lightcoral;
-             color: blue;       }
-  
+        .MuiDataGrid-row.Mui-selected {
+            background-color: rgb(255, 255, 255); // Selected row background color
+            &:hover {
+                background-color: rgb(175, 247, 175); // Hover color for selected row
+            }
+        }
 
 
 

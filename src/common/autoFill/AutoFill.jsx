@@ -8,6 +8,8 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 
+import "./autoFill.scss";
+
 const filter = createFilterOptions();
 
  const AutoFill = () => {
@@ -148,7 +150,7 @@ const filter = createFilterOptions();
 
 export default AutoFill;
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
+const top100Film1 = [
   { title: 'Housing', year: 1994 },
   { title: 'Transportation ', year: 1972 },
   { title: 'Food & Groceries', year: 1974 },
@@ -158,3 +160,16 @@ const top100Films = [
   { title: 'Savings & Investments', year: 1994 },
 ];
 
+const top100Films2 = [
+  { title: 'aa', year: 1994 },
+  { title: 'bb ', year: 1972 },
+  { title: 'cc & Groceries', year: 1974 },
+  { title: 'dd', year: 2008 },
+  { title: 'ee ', year: 1957 },
+  { title: "ff ", year: 1993 },
+  { title: 'gg& Investments', year: 1994 },
+];
+
+const top100Films = [
+ ...top100Film1, ...top100Films2
+];

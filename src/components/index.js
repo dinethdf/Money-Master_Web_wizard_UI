@@ -4,3 +4,6 @@ export { default as AreaCharts } from "./dashboard/areaCharts/AreaCharts";
 export { default as AreaTable } from "./dashboard/areaTable/AreaTable";
 export { default as AreaTop } from "./dashboard/areaTop/AreaTop";
 
+export { default as TransactionForm } from "./transactionForm/TransactionForm";
+
+

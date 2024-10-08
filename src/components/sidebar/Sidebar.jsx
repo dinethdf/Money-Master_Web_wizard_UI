@@ -92,6 +92,14 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
+              <Link to="/incomes" className="menu-link">
+                <span className="menu-link-icon">
+                  <MdOutlineShoppingBag size={20} />
+                </span>
+                <span className="menu-link-text">Incomes</span>
+              </Link>
+            </li>
+            <li className="menu-item">
               <Link to="/samplecomp" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineShoppingBag size={20} />
@@ -99,14 +107,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Sample Comp</span>
               </Link>
             </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineShoppingBag size={20} />
-                </span>
-                <span className="menu-link-text">Products</span>
-              </Link>
-            </li>
+
             <li className="menu-item">
               <Link to="/" className="menu-link">
                 <span className="menu-link-icon">

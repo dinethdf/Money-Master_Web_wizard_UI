@@ -9,6 +9,7 @@ import BaseLayout from "./layout/BaseLayout";
 import { Dashboard, PageNotFound, Statistics, Transaction,SampleComp } from "./screens";
 import Login from "./components/login/LogIn"
 import SignUp from "./components/signUp/SignUp"
+ import Income from './screens/income/IncomeScreen';
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/statistics" element={<Statistics />} />
             <Route path="/transaction" element={<Transaction />} />
+            <Route path="/incomes" element={<Income/>} />
             <Route path="/samplecomp" element={<SampleComp />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>

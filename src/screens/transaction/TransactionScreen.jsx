@@ -27,7 +27,34 @@ export default function Transaction() {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  const columns = [
+    { field: 'name', headerName: 'Name', width: 180, editable: true },
+    {
+      field: 'age',
+      headerName: 'Age',
+      type: 'number',
+      width: 100,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: 'joinDate',
+      headerName: 'Join date',
+      type: 'date',
+      width: 180,
+      editable: true,
+    },
+    {
+      field: 'role',
+      headerName: 'Department',
+      width: 220,
+      editable: true,
+      type: 'singleSelect',
+      // valueOptions: roles,
+    },
+    
+  ];
   const handleClose = () => {
     setOpen(false);
   };
@@ -39,7 +66,7 @@ export default function Transaction() {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Open max-width dialog
+        Add Transaction
       </Button>
 
       <Dialog
@@ -72,7 +99,9 @@ export default function Transaction() {
         </div>
       </Dialog>
 
-              <Grid/>
+              <Grid
+                columns={columns}
+                              />
 
     </React.Fragment>
   );

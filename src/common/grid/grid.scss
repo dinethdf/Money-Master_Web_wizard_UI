@@ -26,25 +26,26 @@
             color: rgb(233, 231, 231);
             .MuiDataGrid-columnHeaders{
                 .MuiDataGrid-row--borderBottom{
-                    background-color: rgb(78, 34, 209);
+                    background-color: #6e7ef8;
+                    color: rgb(255, 255, 255);
                     // height: 50px;
                 }
             } 
         }
 
         .MuiDataGrid-row:nth-of-type(odd) {
-            background-color: yellow; // Change row background color
+            background-color:  #ebedf7;
             color: rgb(63, 16, 16); // Change row text color
         }
 
         .MuiDataGrid-row:nth-of-type(even) {
-            background-color: red; // Alternate row color
+            background-color:  #ebedf7;
         }
 
         .MuiDataGrid-row.Mui-selected {
-            background-color: rgb(255, 255, 255); // Selected row background color
+            background-color: #bdc7fc; // Selected row background color
             &:hover {
-                background-color: rgb(175, 247, 175); // Hover color for selected row
+                background-color: #b4c0fd; // Selected row background color
             }
         }
 

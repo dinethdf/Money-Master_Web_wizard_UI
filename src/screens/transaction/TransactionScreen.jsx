@@ -76,7 +76,7 @@ export default function Transaction() {
         onClose={handleClose}
       >
         <div className='popup-transactions'>
-          <DialogTitle > Add Transaction</DialogTitle>
+          <DialogTitle > </DialogTitle>
           <DialogContent>
             <Box
               noValidate

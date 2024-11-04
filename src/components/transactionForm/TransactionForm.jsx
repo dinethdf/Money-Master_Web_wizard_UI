@@ -29,16 +29,20 @@ const TransactionForm = () => {
 
 
   const handleClickOutside = (event) => {
+
     if (dateRangeRef.current && !dateRangeRef.current.contains(event.target)) {
       setShowDatePicker(false);
     }
+    
   };
 
   useEffect(() => {
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+
   }, []);
 
   return (

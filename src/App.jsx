@@ -11,6 +11,7 @@ import Login from "./components/login/LogIn"
 import SignUp from "./components/signUp/SignUp"
  import Income from './screens/income/IncomeScreen';
 
+
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 

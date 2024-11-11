@@ -67,20 +67,13 @@ const Sidebar = () => {
                 <span className="menu-link-text">Dashboard</span>
               </Link>
             </li>
+
             <li className="menu-item">
-              <Link to="/statistics" className="menu-link">
+              <Link to="/samplecomp" className="menu-link">
                 <span className="menu-link-icon">
-                  <MdOutlineBarChart size={20} />
+                <MdOutlineBarChart size={20} />
                 </span>
-                <span className="menu-link-text">Statistics</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineAttachMoney size={20} />
-                </span>
-                <span className="menu-link-text">Payment</span>
+                <span className="menu-link-text">Sample Comp</span>
               </Link>
             </li>
             <li className="menu-item">
@@ -99,12 +92,22 @@ const Sidebar = () => {
                 <span className="menu-link-text">Incomes</span>
               </Link>
             </li>
-            <li className="menu-item">
-              <Link to="/samplecomp" className="menu-link">
+
+
+            {/*  <li className="menu-item">
+              <Link to="/" className="menu-link">
                 <span className="menu-link-icon">
-                  <MdOutlineShoppingBag size={20} />
+                  <MdOutlineAttachMoney size={20} />
                 </span>
-                <span className="menu-link-text">Sample Comp</span>
+                <span className="menu-link-text">Payment</span>
+              </Link>
+            </li>
+           <li className="menu-item">
+              <Link to="/statistics" className="menu-link">
+                <span className="menu-link-icon">
+                   <MdOutlineShoppingBag size={20} />
+                </span>
+                <span className="menu-link-text">Statistics</span>
               </Link>
             </li>
 
@@ -116,6 +119,7 @@ const Sidebar = () => {
                 <span className="menu-link-text">Customer</span>
               </Link>
             </li>
+
             <li className="menu-item">
               <Link to="/" className="menu-link">
                 <span className="menu-link-icon">
@@ -123,7 +127,8 @@ const Sidebar = () => {
                 </span>
                 <span className="menu-link-text">Messages</span>
               </Link>
-            </li>
+            </li> */}
+
           </ul>
         </div>
 
@@ -151,7 +156,7 @@ const Sidebar = () => {
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>
-                <span className="menu-link-text">Log In</span>
+                <span className="menu-link-text">Log Out</span>
               </Link>
             </li>
           </ul>

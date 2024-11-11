@@ -17,10 +17,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 
+//navigating Section
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { checkAuthAndRedirect } from './../../authUtils';
+
 import { TransactionForm } from "../../components";
 import Grid from '../../common/grid/Grid';
 
 export default function Transaction() {
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    checkAuthAndRedirect(navigate)
+  }, []);
+  
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');

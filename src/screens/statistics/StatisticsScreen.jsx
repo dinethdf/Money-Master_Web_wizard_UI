@@ -3,7 +3,20 @@ import { AreaCards, AreaCharts, AreaTable, AreaTop } from "../../components";
 import { BarChart } from '@mui/x-charts/BarChart';
 import TransactionForm from './../../components/transactionForm/TransactionForm';
 
+//navigating Section
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { checkAuthAndRedirect } from './../../authUtils';
+
 const Statistics = () => {
+
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    checkAuthAndRedirect(navigate)
+  }, []);
+
+  
   return (
     <div className="content-area">
       <AreaTop />

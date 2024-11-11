@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 
@@ -59,20 +61,12 @@ export default function Login() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
-  // This code only runs on the client side, to determine the system color preference
+  const navigate = useNavigate();
+
+
   React.useEffect(() => {
-    // // Check if there is a preferred mode in localStorage
-    // const savedMode = localStorage.getItem('themeMode');
-    // if (savedMode) {
-    //   setMode(savedMode);
-    // } else {
-    //   // If no preference is found, it uses system preference
-    //   const systemPrefersDark = window.matchMedia(
-    //     '(prefers-color-scheme: dark)',
-    //   ).matches;
-    //   setMode(systemPrefersDark ? 'dark' : 'light');
-    // }
     setMode('dark');
+    document.cookie = "JWT=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }, []);
 
   const handleClickOpen = () => {
@@ -83,14 +77,38 @@ export default function Login() {
     setOpen(false);
   };
 
-  const handleSubmit = (event) => {
+  const setCookie = (name, value, hours) => {
+    const now = new Date();
+    now.setTime(now.getTime() + hours * 60 * 60 * 1000); // Set expiration in hours
+    document.cookie = `${name}=${value}; expires=${now.toUTCString()}; path=/; Secure; SameSite=Lax`;
+  }
+
+  const handleSubmit = async  (event) => {
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    try {
+      const response = await axios.post('http://localhost:8080/user/login', {
+      	username:data.get('email'),
+        password: data.get('password'),
+      });
+     const jwtToken = response.data;   
+     setCookie('JWT', jwtToken, 1); // Cookie will expire in 1 day
+     jwtToken && navigate('/');
+
+    } catch (error) {
+      console.error("Login failed", error);
+    }
+    // setCookie('JWT', "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYSIsInJvbGUiOiJST0xFX2FkbWluIiwiZXhwIjoxNzMxMTQ0NDUyfQ.Fk6P_1CtMnxOqcnCdxzqHRCM2VXoWaw3lzxmHs_Wwt4", 24); // Cookie will expire in 1 day
+    // navigate('/');
   };
+
+
 
   const validateInputs = () => {
     const email = document.getElementById('email');

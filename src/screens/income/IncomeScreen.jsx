@@ -24,6 +24,7 @@ import { checkAuthAndRedirect } from './../../authUtils';
 
 import { TransactionForm } from "../../components";
 import Grid from '../../common/grid/Grid';
+import IncomeFormENT from './../../components/IncomeFormEnt/IncomeForm';
 
 function Income() {
 
@@ -104,7 +105,7 @@ function Income() {
               }}
             >
               <div className="content-area">
-                <TransactionForm />
+                <IncomeFormENT/>
               </div>
             </Box>
           </DialogContent>

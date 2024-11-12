@@ -8,10 +8,9 @@ import MuiColorTemplate from "../../components/charts/MuiColorTemplate";
 const SampleCompScreen = () => {
   return (
     <div className="content-area">
-      <div>Sample COmp</div>
     
-      <AreaCards />
     
+   
       <section className="sample-component-charts">
       <div className="sample-bar-chart">
       <div className="sample-bar-chart-info">
@@ -36,20 +35,12 @@ const SampleCompScreen = () => {
       </div>
     </div>
     </section>
-      <AreaCharts />
-      <AreaTable />
-      <section className="sample-component-charts">
-      <div className="sample-bar-chart">
-      <div className="sample-bar-chart-info">
-        <h5 className="bar-chart-title">Total Revenue</h5>
-        <div className="chart-info-data">
-        
-        <div className="info-data-value">$50.4K</div>
-          <div className="info-data-text">
-           
-            <p>5% than last month.</p>
-          </div>
-        </div>
+   
+    
+      <section className="sample-component-section-2">
+    <div className="progress-bar">
+      <div className="progress-bar-info">
+        <h4 className="progress-bar-title">Most Sold Items</h4>
       </div>
       <div className="bar-chart-wrapper">
          <BasicPie/>
@@ -60,7 +51,15 @@ const SampleCompScreen = () => {
         <h4 className="progress-bar-title">Most Sold Items</h4>
       </div>
       <div className="progress-bar-list">
-<MuiColorTemplate/>
+
+      </div>
+    </div>
+    <div className="progress-bar">
+      <div className="progress-bar-info">
+        <h4 className="progress-bar-title">Most Sold Items</h4>
+      </div>
+      <div className="progress-bar-list">
+          {/* <MuiColorTemplate/> */}
       </div>
     </div>
     </section>

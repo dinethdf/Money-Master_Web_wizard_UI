@@ -4,6 +4,7 @@ import { AreaCards, AreaCharts, AreaTable, AreaTop } from "../../components";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import { checkAuthAndRedirect } from './../../authUtils';
+import SampleCompScreen from "../sampleComp/SampleCompScreen";
 
 const Dashboard = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
       <AreaTop />
       <AreaCards />
       <AreaCharts />
+      <SampleCompScreen/>
       <AreaTable />
     </div>
   );

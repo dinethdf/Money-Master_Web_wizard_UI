@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import { checkAuthAndRedirect } from './../../authUtils';
 import SampleCompScreen from "../sampleComp/SampleCompScreen";
+import IncomeTable from './../../components/dashboard/incomeTable/IncomeTable';
 
 const Dashboard = () => {
 
@@ -18,8 +19,9 @@ const Dashboard = () => {
       <AreaTop />
       <AreaCards />
       <AreaCharts />
-      <SampleCompScreen/>
+      {/* <SampleCompScreen/> */}
       <AreaTable />
+      <IncomeTable/>
     </div>
   );
 };

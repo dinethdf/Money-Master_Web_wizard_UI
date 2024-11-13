@@ -22,50 +22,16 @@ import {
   randomTraderName,
   randomId,
   randomArrayItem,
+  randomPrice,
+  randomCommodity
 } from '@mui/x-data-grid-generator';
 
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
 
-const initialRows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 19,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 28,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 23,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-];
+// const randomRole = () => {
+//   return randomArrayItem(roles);
+// };
+
+
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
@@ -92,6 +58,21 @@ function EditToolbar(props) {
 }
 
 export default function Grid(props) {
+  
+  // const roles = ['Utilities','Food', 'Travel', 'Education', 'Bill'];
+  
+  const initialRows = [
+    ...props.dataColoumns,
+    {
+      id: 999,
+      discription: "Payment 999",
+      amount: 999,
+      happenDate: new Date(2024-10-14),
+      category: "Bill",
+    },
+
+  ];
+
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -134,6 +115,8 @@ export default function Grid(props) {
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
   };
+
+
 
   const columns = [
       ...props.columns,

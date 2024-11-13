@@ -14,6 +14,14 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 
@@ -61,20 +69,15 @@ export default function SignUp() {
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
 
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const handleClose = () => {
+    setOpen(false);
+    navigate('/login');
+  };
+
 
   React.useEffect(() => {
-    // // Check if there is a preferred mode in localStorage
-    // const savedMode = localStorage.getItem('themeMode');
-    // if (savedMode) {
-    //   setMode(savedMode);
-    // } else {
-    //   // If no preference is found, it uses system preference
-    //   const systemPrefersDark = window.matchMedia(
-    //     '(prefers-color-scheme: dark)',
-    //   ).matches;
-    //   setMode(systemPrefersDark ? 'dark' : 'light');
-    // }
-
     setMode('dark');
   }, []);
 
@@ -129,59 +132,30 @@ export default function SignUp() {
     const handleSubmit = async (event) => {
      
       event.preventDefault();
+      if (validateInputs()) {
 
+        const sendData = new FormData(event.currentTarget);
 
-      const {data} = await axios.post('https://httpbisdan.org/post', {
-        firstName: 'Fred',
-        lastName: 'Flintstone',
-        orders: [1, 2, 3]
-      }, {
+      const data = await axios.post('http://localhost:8080/user/register', {
+        username: sendData.get('email'),
+        password: sendData.get('password'),
+        name: sendData.get('name'),
+        mobileNumber: sendData.get('mobile'),
+        role: "admin"
+    }, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         }
+    }).then((responces)=>{
+      setOpen(true);
+      console.log(responces);
+
     }).catch(function (error) {
       console.log("there is error")
       console.log(error);
     });
-    console.log("data")
-       console.log(data)
 
-
-      if (validateInputs()) {
-
-
-
-        const {data} = await axios.post('https://httpbin.org/post', {
-          firstName: 'Fred',
-          lastName: 'Flintstone',
-          orders: [1, 2, 3]
-        }, {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-      })
-
-        // axios.get('/user?ID=12345')
-        //   .then(function (response) {
-        //     // handle success
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     // handle error
-        //     console.log(error);
-        //   })
-        //   .finally(function () {
-        //     // always executed
-        //   });
-
-        // const data = new FormData(event.currentTarget);
-        //   console.log({
-        //     name: data.get('name'),
-        //     lastName: data.get('lastName'),
-        //     email: data.get('email'),
-        //     password: data.get('password'),
-        //   });
-      }
+  }
 
     };
 
@@ -198,7 +172,7 @@ export default function SignUp() {
           }}
         >
           <Card >
-            {/* <SitemarkIcon /> */}
+          
             <Typography
               component="h1"
               variant="h4"
@@ -275,7 +249,7 @@ export default function SignUp() {
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor="password">Confirm Password</FormLabel>
+                <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
                 <TextField
                   required
                   fullWidth
@@ -320,6 +294,27 @@ export default function SignUp() {
           </Card>
         </Stack>
       </SignUpContainer>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Sign Up Complete"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+          Please  Log in
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </ThemeProvider>
 
   );

@@ -39,34 +39,69 @@ export default function Transaction() {
   const handleClickOpen = () => {
     setOpen(true);
   };
+  const categorys = ['Utilities', 'Food', 'Travel', 'Education', 'Bill'];
   const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
     {
-      field: 'age',
-      headerName: 'Age',
+      field: 'happenDate',
+      headerName: 'Transaction  Date',
+      type: 'date',
+      width: 180,
+      editable: true,
+    },
+    { field: 'discription', headerName: 'Discription', width: 250, editable: true },
+    {
+      field: 'amount',
+      headerName: 'Amount',
       type: 'number',
       width: 100,
       align: 'left',
       headerAlign: 'left',
       editable: true,
     },
+
     {
-      field: 'joinDate',
-      headerName: 'Join date',
-      type: 'date',
-      width: 180,
-      editable: true,
-    },
-    {
-      field: 'role',
-      headerName: 'Department',
+      field: 'category',
+      headerName: 'Transaction Category',
       width: 220,
       editable: true,
       type: 'singleSelect',
-      // valueOptions: roles,
+      valueOptions: categorys,
     },
-    
   ];
+
+  const dataColoumns = [
+    {
+      id: 1,
+      discription: "Payment 01",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Food",
+    },
+    {
+      id: 2,
+      discription: "Payment 02",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Education",
+    },
+    {
+      id: 3,
+      discription: "Payment 03",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Utilities",
+    },
+    {
+      id: 4,
+      discription: "Payment 04",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Travel",
+    },
+
+
+  ];
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -114,9 +149,9 @@ export default function Transaction() {
         </div>
       </Dialog>
 
-              <Grid
-                columns={columns}
-                              />
+        <Grid
+          columns={columns}
+          dataColoumns={dataColoumns} />
 
     </React.Fragment>
   );

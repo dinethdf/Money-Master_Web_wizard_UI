@@ -12,28 +12,25 @@ import "./autoFill.scss";
 
 const filter = createFilterOptions();
 
- const AutoFill = () => {
+ const TransactionAutoFill = (props) => {
   const [value, setValue] = React.useState(null);
   const [open, toggleOpen] = React.useState(false);
 
   const handleClose = () => {
     setDialogValue({
       title: '',
-      year: '',
     });
     toggleOpen(false);
   };
-
+  
   const [dialogValue, setDialogValue] = React.useState({
-    title: '',
-    year: '',
+    title: ''
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setValue({
-      title: dialogValue.title,
-      year: parseInt(dialogValue.year, 10),
+      title: dialogValue.title
     });
     handleClose();
   };
@@ -48,15 +45,14 @@ const filter = createFilterOptions();
             setTimeout(() => {
               toggleOpen(true);
               setDialogValue({
-                title: newValue,
-                year: '',
+                title: newValue
               });
             });
           } else if (newValue && newValue.inputValue) {
             toggleOpen(true);
             setDialogValue({
-              title: newValue.inputValue,
-              year: '',
+              title: newValue.inputValue
+            
             });
           } else {
             setValue(newValue);
@@ -75,7 +71,7 @@ const filter = createFilterOptions();
           return filtered;
         }}
         id="free-solo-dialog-demo"
-        options={category}
+        options={categorys}
         getOptionLabel={(option) => {
           // for example value selected with enter, right from the input
           if (typeof option === 'string') {
@@ -99,14 +95,14 @@ const filter = createFilterOptions();
         }}
         sx={{ width: 300 }}
         freeSolo
-        renderInput={(params) => <TextField {...params} label="Income Category" />}
+        renderInput={(params) => <TextField {...params} label="Expences Category" />}
       />
       <Dialog open={open} onClose={handleClose}>
         <form onSubmit={handleSubmit}>
-          <DialogTitle>Add a new Category</DialogTitle>
+          <DialogTitle>Add a new film</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Did you miss any Category in our list? Please, add it!
+              Did you miss any film in our list? Please, add it!
             </DialogContentText>
             <TextField
               autoFocus
@@ -119,11 +115,24 @@ const filter = createFilterOptions();
                   title: event.target.value,
                 })
               }
-              label="Category"
+              label="title"
               type="text"
               variant="standard"
             />
-
+            <TextField
+              margin="dense"
+              id="name"
+              value={dialogValue.categoryId}
+              onChange={(event) =>
+                setDialogValue({
+                  ...dialogValue,
+                  categoryId: event.target.value,
+                })
+              }
+              label="categoryId"
+              type="number"
+              variant="standard"
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
@@ -135,10 +144,12 @@ const filter = createFilterOptions();
   );
 }
 
-export default AutoFill;
+export default TransactionAutoFill;
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const category = [
-  { title: 'Fiver', year: 1994 },
-  { title: 'Main-Job ', year: 1972 },
-  { title: 'Fix-Deposits', year: 1974 }
+const categorys = [
+  { title: 'Utilities', categoryId: 1 },
+  { title: 'Food ', categoryId: 2 },
+  { title: 'Travel & Groceries', categoryId: 3 },
+  { title: 'Education', categoryId: 4 },
+  { title: 'Bill ', categoryId: 5 },
 ];

@@ -50,23 +50,10 @@ const IncomeFormENT = () => {
       <div className="area-top-l">
         <form>
           <div className="form-controller-1">
-            <TextField
-              className="form1"
-              label="Type"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+
             <TextField
               className="form1"
               label="Discription"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              className="form1"
-              label="Payment Methode"
               variant="outlined"
               fullWidth
               margin="normal"
@@ -75,14 +62,7 @@ const IncomeFormENT = () => {
             <div className="form-Elements">
               <TextField
                 className="form1"
-                label="Text 1"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-              />
-              <TextField
-                className="form1"
-                label="Text 2"
+                label="Amount"
                 variant="outlined"
                 fullWidth
                 margin="normal"
@@ -92,7 +72,7 @@ const IncomeFormENT = () => {
               <AutoFill className="form1"/>
              </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="Select Transaction Date" />
+                <DatePicker label="Select Income Date" />
             </LocalizationProvider>
       
             <Button

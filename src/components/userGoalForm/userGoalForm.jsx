@@ -21,7 +21,7 @@ import TransactionAutoFill from "../../common/autoFill/TransactionAutoFill";
 
 
 
-const TransactionForm = () => {
+const UserGoalForm = () => {
   const { openSidebar } = useContext(SidebarContext);
   const dateRangeRef = useRef(null);
 
@@ -81,12 +81,8 @@ const TransactionForm = () => {
                 id="Amount"
               />
             </div>
-
-             <div className="form-Elements-autoFill">
-              <TransactionAutoFill className="form1"/>
-             </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="Select Transaction Date" />
+                <DatePicker label="Select Target Date" />
             </LocalizationProvider>
       
             <Button
@@ -104,4 +100,4 @@ const TransactionForm = () => {
   );
 };
 
-export default TransactionForm;
+export default UserGoalForm;

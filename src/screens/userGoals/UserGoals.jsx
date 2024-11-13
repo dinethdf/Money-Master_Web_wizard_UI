@@ -25,7 +25,7 @@ import { checkAuthAndRedirect } from './../../authUtils';
 import { TransactionForm } from "../../components";
 import Grid from '../../common/grid/Grid';
 
-export default function Transaction() {
+export default function UserGoals() {
 
   const navigate = useNavigate();
   useEffect(() => {

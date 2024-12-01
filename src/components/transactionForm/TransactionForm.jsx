@@ -16,15 +16,14 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import AutoFill from "../../common/autoFill/AutoFill";
 import TransactionAutoFill from "../../common/autoFill/TransactionAutoFill";
 
 
 
-const TransactionForm = () => {
+const TransactionForm = (props) => {
   const { openSidebar } = useContext(SidebarContext);
   const dateRangeRef = useRef(null);
-
+  const [transaction, setTransaction] = useState([]);
 
   const handleClickOutside = (event) => {
 
@@ -34,14 +33,27 @@ const TransactionForm = () => {
     
   };
 
-  useEffect(() => {
+  const handletransactionCategory = (data) => {
+    console.log(data)
+    setTransaction((prevTransaction) => ({
+      ...prevTransaction, 
+      ["category"]: data.title, 
+    }));
     
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+  };
 
-  }, []);
+  const formSubmit  = () => {
+    // console.log(transaction);
+    const addId = {...transaction, id:5};
+    console.log(addId)
+    props.updateData(transaction);
+    // setTransaction([]);
+    
+  };
+//   useEffect(() => {
+// console.log(transaction)
+
+//   }, [transaction]);
 
   return (
     <section className="form-area-top">
@@ -50,7 +62,7 @@ const TransactionForm = () => {
       </div>
 
       <div className="area-top-l">
-        <form>
+ 
           <div className="form-controller-1">
 
             <TextField
@@ -60,16 +72,29 @@ const TransactionForm = () => {
               fullWidth
               margin="normal"
               id="discription"
+           
+              onChange={(event) => {
+                setTransaction((prevTransaction) => ({
+                  ...prevTransaction, 
+                  [event.target.id]: event.target.value, 
+                }));
+              }}
             />
             
-            <TextField
+            {/* <TextField
               className="form1"
               label="Payment Methode"
               variant="outlined"
               fullWidth
               margin="normal"
               id="paymentMethode"
-            />
+              onChange={(event) => {
+                setTransaction((prevTransaction) => ({
+                  ...prevTransaction, 
+                  [event.target.id]: event.target.value, 
+                }));
+              }}
+            /> */}
 
             <div className="form-Elements">
               <TextField
@@ -78,26 +103,45 @@ const TransactionForm = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                id="Amount"
+                id="amount"
+                onChange={(event) => {
+                  setTransaction((prevTransaction) => ({
+                    ...prevTransaction, 
+                    [event.target.id]: event.target.value, 
+                  }));
+                }}
               />
             </div>
 
              <div className="form-Elements-autoFill">
-              <TransactionAutoFill className="form1"/>
+              <TransactionAutoFill 
+                  className="form1"
+                  handletransactionCategory = {handletransactionCategory}
+              />
              </div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker label="Select Transaction Date" />
+                <DatePicker label="Select Transaction Date" 
+                        onChange={(newDate) => {
+                     
+                            setTransaction((prevTransaction) => ({
+                              ...prevTransaction, 
+                              ["happenDate"]: newDate ? new Date(newDate.format('YYYY-MM-DD')) : null, 
+                            }));
+                        }}
+                      
+                        />
             </LocalizationProvider>
       
             <Button
               className="submitBtn"
               variant="contained"
               color="primary"
+              onClick={formSubmit}
             >
               Submit
             </Button>
           </div>
-        </form>
+      
       </div>
 
     </section>

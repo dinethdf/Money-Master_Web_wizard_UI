@@ -58,12 +58,20 @@ function EditToolbar(props) {
 }
 
 export default function Grid(props) {
-  
   const initialRows = [
     ...props.dataColoumns
   ];
+  const [rows, setRows] = React.useState();
 
-  const [rows, setRows] = React.useState(initialRows);
+  
+  React.useEffect(() => {
+    setRows(initialRows)
+  }, [props]);
+
+  
+
+
+ 
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {

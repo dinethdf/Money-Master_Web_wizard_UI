@@ -31,10 +31,26 @@ export default function Transaction() {
   useEffect(() => {
     checkAuthAndRedirect(navigate)
   }, []);
-  
+
+  let newId = 4;
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
+  const [data, setData] = React.useState([ {
+    id: 1,
+    discription: "Payment food city",
+    amount: 560,
+    happenDate: new Date("2024-10-14"),
+    category: "Food",
+  },
+  {
+    id: 2,
+    discription: "Class fees",
+    amount: 2500,
+    happenDate: new Date("2024-10-28"),
+    category: "Education",
+  }])
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -69,23 +85,23 @@ export default function Transaction() {
     },
   ];
 
-  const dataColoumns = [
-    {
-      id: 1,
-      discription: "Payment 01",
-      amount: 560,
-      happenDate: new Date(2024-10-14),
-      category: "Food",
-    },
-    {
-      id: 2,
-      discription: "Payment 02",
-      amount: 560,
-      happenDate: new Date(2024-10-14),
-      category: "Education",
-    },
+  // const dataColoumns = [
+  //   {
+  //     id: 1,
+  //     discription: "Payment 01",
+  //     amount: 560,
+  //     happenDate: new Date(2024-10-14),
+  //     category: "Food",
+  //   },
+  //   {
+  //     id: 2,
+  //     discription: "Payment 02",
+  //     amount: 560,
+  //     happenDate: new Date(2024-10-14),
+  //     category: "Education",
+  //   },
 
-  ];
+  // ];
 
   const handleClose = () => {
     setOpen(false);
@@ -94,6 +110,26 @@ export default function Transaction() {
   const handleFullWidthChange = (event) => {
     setFullWidth(event.target.checked);
   };
+
+  const saveTransaction = () =>{
+    setData([...data,    {
+      id: 3,
+      discription: "Payment 03sd",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Education",
+    }])
+  }  
+
+  const updateData = (transactions) =>{
+
+    newId = newId + 1 ;
+    const addIdTransaxtion = {...transactions, id:newId};
+    console.log([...data, addIdTransaxtion])
+    setData([...data, addIdTransaxtion])
+  
+   handleClose();
+  }  
 
   return (
     <React.Fragment>
@@ -124,7 +160,7 @@ export default function Transaction() {
               }}
             >
               <div className="content-area">
-                <TransactionForm categorys={categorys} />
+                <TransactionForm categorys={categorys}  updateData={updateData}/>
               </div>
             </Box>
           </DialogContent>
@@ -136,7 +172,8 @@ export default function Transaction() {
 
         <Grid
           columns={columns}
-          dataColoumns={dataColoumns} />
+          dataColoumns={data}
+          />
 
     </React.Fragment>
   );

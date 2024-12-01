@@ -2,11 +2,9 @@ import AreaTableAction from "./AreaTableAction";
 import "./AreaTable.scss";
 
 const TABLE_HEADS = [
-  "Products",
-  "Order ID",
-  "Date",
-  "Customer name",
-  "Status",
+  "Transaction Date",
+  "Discription",
+  "Category",
   "Amount",
   "Action",
 ];
@@ -14,58 +12,40 @@ const TABLE_HEADS = [
 const TABLE_DATA = [
   {
     id: 100,
-    name: "Iphone 13 Pro",
-    order_id: 11232,
+    name: "Payment food city",
     date: "Jun 29,2022",
-    customer: "Afaq Karim",
+    customer: "Food",
     status: "delivered",
     amount: 400,
   },
   {
     id: 101,
-    name: "Macbook Pro",
+    name: "Class fees",
     order_id: 11232,
     date: "Jun 29,2022",
-    customer: "Afaq Karim",
+    customer: "Education",
     status: "pending",
     amount: 288,
   },
   {
     id: 102,
-    name: "Apple Watch",
+    name: "Payment food city",
     order_id: 11232,
     date: "Jun 29,2022",
-    customer: "Afaq Karim",
+    customer: "Food",
     status: "canceled",
     amount: 500,
   },
   {
     id: 103,
-    name: "Microsoft Book",
+    name: "Light Bill",
     order_id: 11232,
     date: "Jun 29,2022",
-    customer: "Afaq Karim",
+    customer: "Bill",
     status: "delivered",
     amount: 100,
   },
-  {
-    id: 104,
-    name: "Apple Pen",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 60,
-  },
-  {
-    id: 105,
-    name: "Airpods",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Afaq Karim",
-    status: "delivered",
-    amount: 80,
-  },
+
 ];
 
 const AreaTable = () => {
@@ -87,18 +67,10 @@ const AreaTable = () => {
             {TABLE_DATA?.map((dataItem) => {
               return (
                 <tr key={dataItem.id}>
-                  <td>{dataItem.name}</td>
-                  <td>{dataItem.order_id}</td>
+                
                   <td>{dataItem.date}</td>
+                  <td>{dataItem.name}</td>
                   <td>{dataItem.customer}</td>
-                  <td>
-                    <div className="dt-status">
-                      <span
-                        className={`dt-status-dot dot-${dataItem.status}`}
-                      ></span>
-                      <span className="dt-status-text">{dataItem.status}</span>
-                    </div>
-                  </td>
                   <td>${dataItem.amount.toFixed(2)}</td>
                   <td className="dt-cell-action">
                     <AreaTableAction />

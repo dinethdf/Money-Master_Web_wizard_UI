@@ -32,8 +32,13 @@ const filter = createFilterOptions();
     setValue({
       title: dialogValue.title
     });
+
     handleClose();
   };
+
+  React.useEffect(() => {
+    value && props.handletransactionCategory(value)
+  }, [value]);
 
   return (
     <React.Fragment>
@@ -57,6 +62,7 @@ const filter = createFilterOptions();
           } else {
             setValue(newValue);
           }
+            
         }}
         filterOptions={(options, params) => {
           const filtered = filter(options, params);

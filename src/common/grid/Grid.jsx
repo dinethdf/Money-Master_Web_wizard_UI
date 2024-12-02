@@ -58,22 +58,20 @@ function EditToolbar(props) {
 }
 
 export default function Grid(props) {
-  
-  // const roles = ['Utilities','Food', 'Travel', 'Education', 'Bill'];
-  
   const initialRows = [
-    ...props.dataColoumns,
-    {
-      id: 999,
-      discription: "Payment 999",
-      amount: 999,
-      happenDate: new Date(2024-10-14),
-      category: "Bill",
-    },
-
+    ...props.dataColoumns
   ];
+  const [rows, setRows] = React.useState();
 
-  const [rows, setRows] = React.useState(initialRows);
+  
+  React.useEffect(() => {
+    setRows(initialRows)
+  }, [props]);
+
+  
+
+
+ 
   const [rowModesModel, setRowModesModel] = React.useState({});
 
   const handleRowEditStop = (params, event) => {
@@ -115,7 +113,6 @@ export default function Grid(props) {
   const handleRowModesModelChange = (newRowModesModel) => {
     setRowModesModel(newRowModesModel);
   };
-
 
 
   const columns = [

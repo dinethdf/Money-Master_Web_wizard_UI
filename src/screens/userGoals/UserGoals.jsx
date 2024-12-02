@@ -22,72 +22,33 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import { checkAuthAndRedirect } from './../../authUtils';
 
-import axios from 'axios';
-import { jwtDecode } from "jwt-decode";
-
 import { TransactionForm } from "../../components";
 import Grid from '../../common/grid/Grid';
 
-export default function Transaction() {
+export default function UserGoals() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    checkAuthAndRedirect(navigate);
-
-    loadTransactionData();
+    checkAuthAndRedirect(navigate)
   }, []);
-
-  let newId = 4;
+  
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
-  const [data, setData] = React.useState([])
-
-  const loadTransactionData = async () => {
-    const token = getCookie('JWT');
-    let userName = "";
-    try {
-      const decodedToken = jwtDecode(token);
-      userName = decodedToken.sub;
-    } catch (error) {
-      console.log("Error")
-    }
-    const response = await axios.get(`http://localhost:8080/expenses/user/${userName}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-    )
-      .then(function (response) {
-        setData(response.data)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-      });
-  }
-  
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  };
-
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const categorys = ['Utilities', 'Food', 'Transport', 'Education', 'Bill'];
+  const categorys = ['Utilities', 'Food', 'Travel', 'Education', 'Bill'];
   const columns = [
     {
       field: 'happenDate',
       headerName: 'Transaction  Date',
-      type: 'string',
+      type: 'date',
       width: 180,
       editable: true,
     },
-    { field: 'description', headerName: 'Description', width: 250, editable: true },
+    { field: 'discription', headerName: 'Discription', width: 250, editable: true },
     {
       field: 'amount',
       headerName: 'Amount',
@@ -101,13 +62,6 @@ export default function Transaction() {
     {
       field: 'category',
       headerName: 'Transaction Category',
-      valueGetter: (value, row) => {
-        console.log(value,row)
-        // if (!row.gross || !row.costs) {
-        //   return null;
-        // }
-      return row.expensesCategory.name
-      },
       width: 220,
       editable: true,
       type: 'singleSelect',
@@ -115,23 +69,23 @@ export default function Transaction() {
     },
   ];
 
-  // const dataColoumns = [
-  //   {
-  //     id: 1,
-  //     discription: "Payment 01",
-  //     amount: 560,
-  //     happenDate: new Date(2024-10-14),
-  //     category: "Food",
-  //   },
-  //   {
-  //     id: 2,
-  //     discription: "Payment 02",
-  //     amount: 560,
-  //     happenDate: new Date(2024-10-14),
-  //     category: "Education",
-  //   },
+  const dataColoumns = [
+    {
+      id: 1,
+      discription: "Payment 01",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Food",
+    },
+    {
+      id: 2,
+      discription: "Payment 02",
+      amount: 560,
+      happenDate: new Date(2024-10-14),
+      category: "Education",
+    },
 
-  // ];
+  ];
 
   const handleClose = () => {
     setOpen(false);
@@ -140,26 +94,6 @@ export default function Transaction() {
   const handleFullWidthChange = (event) => {
     setFullWidth(event.target.checked);
   };
-
-  const saveTransaction = () =>{
-    setData([...data,    {
-      id: 3,
-      discription: "Payment 03sd",
-      amount: 560,
-      happenDate: new Date(2024-10-14),
-      category: "Education",
-    }])
-  }  
-
-  const updateData = (transactions) =>{
-
-    newId = newId + 1 ;
-    const addIdTransaxtion = {...transactions, id:newId};
-    console.log([...data, addIdTransaxtion])
-    setData([...data, addIdTransaxtion])
-  
-   handleClose();
-  }  
 
   return (
     <React.Fragment>
@@ -190,7 +124,7 @@ export default function Transaction() {
               }}
             >
               <div className="content-area">
-                <TransactionForm categorys={categorys}  updateData={updateData}/>
+                <TransactionForm categorys={categorys} />
               </div>
             </Box>
           </DialogContent>
@@ -202,8 +136,7 @@ export default function Transaction() {
 
         <Grid
           columns={columns}
-          dataColoumns={data}
-          />
+          dataColoumns={dataColoumns} />
 
     </React.Fragment>
   );

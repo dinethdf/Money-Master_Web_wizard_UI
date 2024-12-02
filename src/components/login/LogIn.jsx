@@ -103,8 +103,12 @@ export default function Login() {
 
     } catch (error) {
       console.error("Login failed", error);
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a Correct email address.');
+      setPasswordError(true);
+      setPasswordErrorMessage('Password not correct');
     }
-    // setCookie('JWT', "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYSIsInJvbGUiOiJST0xFX2FkbWluIiwiZXhwIjoxNzMxMTQ0NDUyfQ.Fk6P_1CtMnxOqcnCdxzqHRCM2VXoWaw3lzxmHs_Wwt4", 24); // Cookie will expire in 1 day
+    // setCookie('JWT', "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmJjZCIsInJvbGUiOiJST0xFX2FkbWluIiwiZXhwIjoxNzMxNTU4MzI3fQ.FlWZv1M86bFPVJv7VzsDSIRnTY79OePKPTRoFD6DhYQ", 24); // Cookie will expire in 1 day
     // navigate('/');
   };
 

@@ -1,5 +1,8 @@
 import AreaTableAction from "./AreaTableAction";
 import "./AreaTable.scss";
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const TABLE_HEADS = [
   "Transaction Date",
@@ -8,6 +11,7 @@ const TABLE_HEADS = [
   "Amount",
   "Action",
 ];
+
 
 const TABLE_DATA = [
   {
@@ -48,7 +52,50 @@ const TABLE_DATA = [
 
 ];
 
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+};
+
 const AreaTable = () => {
+
+const  [data, setData] = useState([]);
+
+useEffect(() => {
+ loadTransactionData();
+}, []);
+
+  const loadTransactionData = async () => {
+    const token = getCookie('JWT');
+    let userName = "";
+
+    try {
+      const decodedToken = jwtDecode(token);
+      userName = decodedToken.sub;
+
+    } catch (error) {
+      console.log("Error")
+    }
+
+    const response = await axios.get(`http://localhost:8080/expenses/user/${userName}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    )
+      .then(function (response) {
+        setData(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        
+      });
+  }
+
+
   return (
     <section className="content-area-table">
       <div className="data-table-info">
@@ -64,13 +111,13 @@ const AreaTable = () => {
             </tr>
           </thead>
           <tbody>
-            {TABLE_DATA?.map((dataItem) => {
+            {data?.slice(0, 8).map((dataItem) => {
               return (
                 <tr key={dataItem.id}>
-                
-                  <td>{dataItem.date}</td>
-                  <td>{dataItem.name}</td>
-                  <td>{dataItem.customer}</td>
+
+                  <td>{dataItem.happenDate}</td>
+                  <td>{dataItem.description}</td>
+                  <td>{dataItem.expensesCategory.name}</td>
                   <td>${dataItem.amount.toFixed(2)}</td>
                   <td className="dt-cell-action">
                     <AreaTableAction />

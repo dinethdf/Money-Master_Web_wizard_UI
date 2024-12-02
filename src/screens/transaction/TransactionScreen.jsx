@@ -22,6 +22,9 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 import { checkAuthAndRedirect } from './../../authUtils';
 
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+
 import { TransactionForm } from "../../components";
 import Grid from '../../common/grid/Grid';
 
@@ -29,42 +32,62 @@ export default function Transaction() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    checkAuthAndRedirect(navigate)
+    checkAuthAndRedirect(navigate);
+
+    loadTransactionData();
   }, []);
 
   let newId = 4;
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
-  const [data, setData] = React.useState([ {
-    id: 1,
-    discription: "Payment food city",
-    amount: 560,
-    happenDate: new Date("2024-10-14"),
-    category: "Food",
-  },
-  {
-    id: 2,
-    discription: "Class fees",
-    amount: 2500,
-    happenDate: new Date("2024-10-28"),
-    category: "Education",
-  }])
+  const [data, setData] = React.useState([])
+
+  const loadTransactionData = async () => {
+    const token = getCookie('JWT');
+    let userName = "";
+    try {
+      const decodedToken = jwtDecode(token);
+      userName = decodedToken.sub;
+    } catch (error) {
+      console.log("Error")
+    }
+    const response = await axios.get(`http://localhost:8080/expenses/user/${userName}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    )
+      .then(function (response) {
+        setData(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+      });
+  }
+  
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  };
 
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const categorys = ['Utilities', 'Food', 'Travel', 'Education', 'Bill'];
+  const categorys = ['Utilities', 'Food', 'Transport', 'Education', 'Bill'];
   const columns = [
     {
       field: 'happenDate',
       headerName: 'Transaction  Date',
-      type: 'date',
+      type: 'string',
       width: 180,
       editable: true,
     },
-    { field: 'discription', headerName: 'Discription', width: 250, editable: true },
+    { field: 'description', headerName: 'Description', width: 250, editable: true },
     {
       field: 'amount',
       headerName: 'Amount',
@@ -78,6 +101,13 @@ export default function Transaction() {
     {
       field: 'category',
       headerName: 'Transaction Category',
+      valueGetter: (value, row) => {
+        console.log(value,row)
+        // if (!row.gross || !row.costs) {
+        //   return null;
+        // }
+      return row.expensesCategory.name
+      },
       width: 220,
       editable: true,
       type: 'singleSelect',

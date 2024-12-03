@@ -9,7 +9,8 @@ import BaseLayout from "./layout/BaseLayout";
 import { Dashboard, PageNotFound, Statistics, Transaction,SampleComp } from "./screens";
 import Login from "./components/login/LogIn"
 import SignUp from "./components/signUp/SignUp"
- import Income from './screens/income/IncomeScreen';
+import Income from './screens/income/IncomeScreen';
+
 
 
 function App() {

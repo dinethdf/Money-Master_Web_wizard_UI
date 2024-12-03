@@ -13,45 +13,6 @@ const TABLE_HEADS = [
 ];
 
 
-const TABLE_DATA = [
-  {
-    id: 100,
-    name: "Payment food city",
-    date: "Jun 29,2022",
-    customer: "Food",
-    status: "delivered",
-    amount: 400,
-  },
-  {
-    id: 101,
-    name: "Class fees",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Education",
-    status: "pending",
-    amount: 288,
-  },
-  {
-    id: 102,
-    name: "Payment food city",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Food",
-    status: "canceled",
-    amount: 500,
-  },
-  {
-    id: 103,
-    name: "Light Bill",
-    order_id: 11232,
-    date: "Jun 29,2022",
-    customer: "Bill",
-    status: "delivered",
-    amount: 100,
-  },
-
-];
-
 const getCookie = (name) => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
@@ -85,7 +46,14 @@ useEffect(() => {
     }
     )
       .then(function (response) {
-        setData(response.data)
+        if (!response.data || response.data.length === 0) {
+          console.log("No Data");
+        } else{
+        
+          console.log(response.data)
+          setData(response.data)
+        }
+
       })
       .catch(function (error) {
         console.log(error);
@@ -102,7 +70,7 @@ useEffect(() => {
         <h4 className="data-table-title">Latest Expenses</h4>
       </div>
       <div className="data-table-diagram">
-        <table>
+      {data?.length != 0 ? <table>
           <thead>
             <tr>
               {TABLE_HEADS?.map((th, index) => (
@@ -110,6 +78,7 @@ useEffect(() => {
               ))}
             </tr>
           </thead>
+    
           <tbody>
             {data?.slice(0, 8).map((dataItem) => {
               return (
@@ -127,6 +96,8 @@ useEffect(() => {
             })}
           </tbody>
         </table>
+        : "No Data"}
+
       </div>
     </section>
   );

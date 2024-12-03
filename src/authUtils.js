@@ -21,12 +21,11 @@ export const checkAuthAndRedirect = (navigate) => {
     const currentTime = Date.now() / 1000;
 
     if (decodedToken.exp < currentTime) {
-   
       navigate('/login');
+      return false;
     }
-
-    console.log("sds")
-     return true
+     return true;
+     
   } catch (error) {
  
     navigate('/login');

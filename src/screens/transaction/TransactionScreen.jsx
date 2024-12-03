@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import "./transactionScreen.scss";
 
 import Box from '@mui/material/Box';
@@ -8,19 +7,11 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import Typography from '@mui/material/Typography';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
 
 //navigating Section
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
-import { checkAuthAndRedirect } from './../../authUtils';
 
 import axios from 'axios';
 import { jwtDecode } from "jwt-decode";
@@ -30,18 +21,15 @@ import Grid from '../../common/grid/Grid';
 
 export default function Transaction() {
 
-  const navigate = useNavigate();
   useEffect(() => {
-    checkAuthAndRedirect(navigate);
-
     loadTransactionData();
   }, []);
 
-  let newId = 4;
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [maxWidth, setMaxWidth] = React.useState('md');
   const [data, setData] = React.useState([])
+
 
   const loadTransactionData = async () => {
     const token = getCookie('JWT');
@@ -102,7 +90,7 @@ export default function Transaction() {
       field: 'category',
       headerName: 'Transaction Category',
       valueGetter: (value, row) => {
-        console.log(value,row)
+        // console.log(value,row)
         // if (!row.gross || !row.costs) {
         //   return null;
         // }
@@ -153,10 +141,10 @@ export default function Transaction() {
 
   const updateData = (transactions) =>{
 
-    newId = newId + 1 ;
-    const addIdTransaxtion = {...transactions, id:newId};
-    console.log([...data, addIdTransaxtion])
-    setData([...data, addIdTransaxtion])
+    // newId = newId + 1 ;
+    // const addIdTransaxtion = {...transactions, id:newId};
+    // console.log([...data, addIdTransaxtion])
+    // setData([...data, addIdTransaxtion])
   
    handleClose();
   }  

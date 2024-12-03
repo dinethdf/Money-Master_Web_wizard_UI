@@ -24,6 +24,9 @@ export const checkAuthAndRedirect = (navigate) => {
    
       navigate('/login');
     }
+
+    console.log("sds")
+     return true
   } catch (error) {
  
     navigate('/login');

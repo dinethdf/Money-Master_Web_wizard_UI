@@ -142,14 +142,14 @@ const Sidebar = () => {
                 <span className="menu-link-text">Settings</span>
               </Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/signup" className="menu-link">
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>
                 <span className="menu-link-text">Sign Up</span>
               </Link>
-            </li>
+            </li> */}
 
             <li className="menu-item">
               <Link to="/login" className="menu-link">

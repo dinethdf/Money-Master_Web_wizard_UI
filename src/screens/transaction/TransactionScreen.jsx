@@ -141,12 +141,12 @@ export default function Transaction() {
 
   const updateData = (transactions) =>{
 
+    loadTransactionData();
     // newId = newId + 1 ;
     // const addIdTransaxtion = {...transactions, id:newId};
     // console.log([...data, addIdTransaxtion])
     // setData([...data, addIdTransaxtion])
   
-   handleClose();
   }  
 
   return (
